@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
 
 // Replace YOUR_IP_HERE with your actual IP address from: ipconfig getifaddr en0
-const API_BASE_URL = 'http://http://192.168.1.186/:5001';
+const API_BASE_URL = 'http://192.168.1.186:5001';
 
 function HeldStocksScreen() {
   const [stocks, setStocks] = useState([]);
@@ -20,8 +20,10 @@ function HeldStocksScreen() {
   const fetchHeldStocks = async () => {
     try {
       setLoading(true);
+      console.log('Fetching from:', `${API_BASE_URL}/owned`);
       const response = await fetch(`${API_BASE_URL}/owned`);
       const data = await response.json();
+      console.log('Received data:', data);
       setStocks(data);
     } catch (error) {
       console.error('Error fetching held stocks:', error);
