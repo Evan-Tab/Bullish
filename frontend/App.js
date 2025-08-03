@@ -20,10 +20,8 @@ function HeldStocksScreen() {
   const fetchHeldStocks = async () => {
     try {
       setLoading(true);
-      console.log('Fetching from:', `${API_BASE_URL}/owned`);
       const response = await fetch(`${API_BASE_URL}/owned`);
       const data = await response.json();
-      console.log('Received data:', data);
       setStocks(data);
     } catch (error) {
       console.error('Error fetching held stocks:', error);
