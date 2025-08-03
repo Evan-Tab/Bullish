@@ -94,4 +94,8 @@ def recommend_stocks():
 # ------------------------------
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Instead of:
+    # app.run(debug=True)
+    
+    # Use this to allow external connections:
+    app.run(host='0.0.0.0', port=5001, debug=True)
